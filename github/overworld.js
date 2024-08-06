@@ -9,23 +9,34 @@ class Overworld {
         this.gamectx = this.gamecanvas.getContext("2d");
 
         this.map = null;
+
+        
     }
 
     startGameLoop() {
         const tick = () => {
             this.bgctx.clearRect(0, 0, this.bgctx.canvas.width, this.bgctx.canvas.height);
             this.gamectx.clearRect(0, 0, this.gamectx.canvas.width, this.gamectx.canvas.height);
-
-            this.map.drawLowerMap(this.bgctx);
+            
+            const camCenter = this.map.gameObjects.Winslow;
 
             Object.values(this.map.gameObjects).forEach(object => {
                 object.update({
                     arrow: this.directionInput.direction
                 })
-                object.sprite.draw(this.gamectx);
+                console.log("Winslow: " + this.map.gameObjects.Winslow.posX / 32 + ", " + this.map.gameObjects.Winslow.posY / 32 );
+            });
+
+            this.map.drawLowerMap(this.bgctx, camCenter);
+
+            Object.values(this.map.gameObjects).forEach(object => {
+                object.update({
+                    arrow: this.directionInput.direction
+                })
+                object.sprite.draw(this.gamectx, camCenter);
             })
 
-            this.map.drawUpperMap(this.gamectx);
+            this.map.drawUpperMap(this.gamectx, camCenter);
 
             requestAnimationFrame(() => {
                 tick();

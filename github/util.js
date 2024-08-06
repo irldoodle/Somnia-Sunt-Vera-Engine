@@ -1,5 +1,5 @@
 const utils = {
     Grid(n) {
-        return n * 16;
+        return n * 32;
     }
 }

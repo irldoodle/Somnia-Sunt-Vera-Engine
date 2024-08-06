@@ -11,13 +11,13 @@ class Sprite {
 
         //Image settings
 
-/*         this.sprite = new Image();
+        this.sprite = new Image();
         this.sprite.onload = () => {
             this.spriteLoaded = true;
         };
-        this.sprite.src = config.src; */
+        this.sprite.src = config.src; 
 
-        this.preload(config);
+        //this.preload(config);
 
         this.useShadow = config.useShadow || true;
         if (this.useShadow) {
@@ -105,9 +105,9 @@ class Sprite {
         }
     }
 
-    draw(ctx) {
-        const posX = this.gameObject.posX - 8 // +- offset;
-        const posY = this.gameObject.posY - 16 // +- offset;
+    draw(ctx, camCenter) {
+        const posX = this.gameObject.posX + utils.Grid(4) - camCenter.posX - 16; // +- offset;
+        const posY = this.gameObject.posY + utils.Grid(3) - camCenter.posY - 32; // +- offset;
         const [frameX, frameY] = this.frame;
 
         this.shadowLoaded && ctx.drawImage(

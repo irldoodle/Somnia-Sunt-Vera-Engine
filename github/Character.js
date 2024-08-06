@@ -2,7 +2,7 @@ class Character extends GameObject {
     constructor(config) {
         super(config);
 
-        this.stepsRemaining = 16;
+        this.stepsRemaining = 0;
 
         this.bPlayerControlled = config.bPlayerControlled || false;
 
@@ -20,7 +20,7 @@ class Character extends GameObject {
 
         if (this.bPlayerControlled && this.stepsRemaining === 0 && state.arrow) {
             this.direction = state.arrow;
-            this.stepsRemaining = 16;
+            this.stepsRemaining = 32;
         }
     }
 

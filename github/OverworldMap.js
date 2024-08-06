@@ -9,11 +9,11 @@ class OverworldMap {
         this.upperImage.src = config.uppersrc;
     }
 
-    drawLowerMap(ctx) {
+    drawLowerMap(ctx, camCenter) {
         ctx.drawImage(
             this.lowerImage,
-            0, 0,
-            this.lowerImage.width, this.lowerImage.height,
+            utils.Grid(16) + camCenter.posX - 16, utils.Grid(12) + camCenter.posY,
+            this.lowerImage.width / 2, this.lowerImage.height / 2,
             0, 0,
             ctx.canvas.width, ctx.canvas.height
         );
@@ -27,7 +27,7 @@ class OverworldMap {
         );*/
     }
 
-    drawUpperMap(ctx) {
+    drawUpperMap(ctx, camCenter) {
         ctx.drawImage(
             this.upperImage,
             0, 0
@@ -56,11 +56,9 @@ window.OverworldMaps = {
             uppersrc: " ",
             gameObjects: {
                 Winslow: new Character({
-                    posX: utils.Grid(2),
-                    posY: utils.Grid(3),
-                    loadPath: "assets/characters",
-                    idleSprite: "IdleSpriteSheetTemplate.png",
-                    walkSprite: "SpriteSheetWalkTemplate.png",
+                    posX: utils.Grid(-16),
+                    posY: utils.Grid(4),
+                    src: "assets/characters/WinslowWalkSprite.png",
                     bPlayerControlled: true
                 })
             }
