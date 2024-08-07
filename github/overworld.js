@@ -22,7 +22,8 @@ class Overworld {
 
             Object.values(this.map.gameObjects).forEach(object => {
                 object.update({
-                    arrow: this.directionInput.direction
+                    arrow: this.directionInput.direction,
+                    map: this.map,
                 })
                 console.log("Winslow: " + this.map.gameObjects.Winslow.posX / 32 + ", " + this.map.gameObjects.Winslow.posY / 32 );
             });
@@ -31,7 +32,8 @@ class Overworld {
 
             Object.values(this.map.gameObjects).forEach(object => {
                 object.update({
-                    arrow: this.directionInput.direction
+                    arrow: this.directionInput.direction,
+                    map: this.map,
                 })
                 object.sprite.draw(this.gamectx, camCenter);
             })

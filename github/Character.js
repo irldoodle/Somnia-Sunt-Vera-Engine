@@ -15,21 +15,36 @@ class Character extends GameObject {
     }
 
     update(state) {
-        this.updatePos();
-        this.updateSprite(state);
+        if (this.stepsRemaining > 0) {
+            this.updatePos();
+        }
+        else {
+            if (this.bPlayerControlled && state.arrow) {
+                this.startBehavior(state, {
+                    type: "walk",
+                    direction: state.arrow
+                })
+            }
+            this.updateSprite(state);
+        }
+        
+    }
 
-        if (this.bPlayerControlled && this.stepsRemaining === 0 && state.arrow) {
-            this.direction = state.arrow;
-            this.stepsRemaining = 32;
+    startBehavior(state, behavior) {
+        this.direction = behavior.direction;
+        if (behavior.type === "walk") {
+            console.log(state.map.isSpaceTaken(this.posX, this.posY, this.direction))
+                
+            this.behavior.stepsRemaining = 32;
         }
     }
 
     updatePos() {
-        if (this.stepsRemaining > 0) {
-            const [property, change] = this.directionUpdate[this.direction];
-            this[property] += change;
-            this.stepsRemaining--;
-        }
+
+        const [property, change] = this.directionUpdate[this.direction];
+        this[property] += change;
+        this.stepsRemaining--;
+
     }
 
     updateSprite(state) {
