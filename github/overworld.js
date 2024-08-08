@@ -31,10 +31,10 @@ class Overworld {
             this.map.drawLowerMap(this.bgctx, camCenter);
 
             Object.values(this.map.gameObjects).forEach(object => {
-                object.update({
+                /*object.update({
                     arrow: this.directionInput.direction,
                     map: this.map,
-                })
+                })*/
                 object.sprite.draw(this.gamectx, camCenter);
             })
 

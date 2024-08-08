@@ -37,7 +37,8 @@ class OverworldMap {
     }
 
     isSpaceTaken(initx, inity, dir){
-        return this.walls[utils.nextPos(initx, inity, dir)] || false;
+        const {x,y} = utils.nextPos(initx, inity, dir);
+        return this.walls[`${x},${y}`] || false;
     }
 }
 

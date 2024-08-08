@@ -4,7 +4,7 @@ const utils = {
     },
 
     asMapCoord(x, y){
-        return `${x*32}, ${y*32}`;
+        return `${x*32},${y*32}`;
     },
 
     nextPos(initX, initY, dir){
@@ -25,6 +25,6 @@ const utils = {
                 y += step;
                 break;
         }
-        return {x, y};
+        return {x,y};
     }
 }

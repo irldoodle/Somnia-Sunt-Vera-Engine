@@ -27,38 +27,29 @@ class Character extends GameObject {
             }
             this.updateSprite(state);
         }
-        
     }
 
     startBehavior(state, behavior) {
         this.direction = behavior.direction;
         if (behavior.type === "walk") {
-            console.log(state.map.isSpaceTaken(this.posX, this.posY, this.direction))
-                
-            this.behavior.stepsRemaining = 32;
+            if (state.map.isSpaceTaken(this.posX, this.posY, this.direction)) {
+                return;
+            }
+            this.stepsRemaining = 32;
         }
     }
 
     updatePos() {
-
         const [property, change] = this.directionUpdate[this.direction];
         this[property] += change;
         this.stepsRemaining--;
-
     }
 
     updateSprite(state) {
-        if (this.bPlayerControlled && this.stepsRemaining === 0 && !state.arrow) {
-            this.sprite.src = "assets/characters/IdleSpriteSheetTemplate.png";
-            setTimeout(() => {
-                this.sprite.setAnimation("idle-" + this.direction);
-            }, 10);
+        if (this.stepsRemaining > 0) {
+            this.sprite.setAnimation("walk-" + this.direction);
             return;
         }
-
-        if (this.stepsRemaining > 0) {
-            this.sprite.src = "assets/characters/SpriteSheetWalkTemplate.png";
-            this.sprite.setAnimation("walk-" + this.direction);
-        }
+        this.sprite.setAnimation("idle-" + this.direction);
     }
 }
