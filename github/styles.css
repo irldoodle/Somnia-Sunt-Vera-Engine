@@ -16,6 +16,7 @@ body{
     margin: 0 auto;
     margin-top: 50px;
     
+    
 }
 .game-container canvas{
     position: absolute;
@@ -23,7 +24,7 @@ body{
     image-rendering: crisp-edges;
     image-rendering: -moz-crisp-edges;
     image-rendering: pixelated;
-
+    border: 0.25px solid white;
     transform: scale(3) translateX(75%) translateY(40%);
 
 }
