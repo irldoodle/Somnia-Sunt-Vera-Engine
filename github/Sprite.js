@@ -31,19 +31,19 @@ class Sprite {
         //Configure Animation and State
         this.animations = config.animations || {
             "idle-down": [
-                [0, 0]
+                [0, 4]
             ],
 
             "idle-left": [
-                [0, 1]
+                [1, 4]
             ],
 
             "idle-right": [
-                [0, 2]
+                [2, 4]
             ],
 
             "idle-up": [
-                [0, 3]
+                [3, 4]
             ],
 
             "walk-down": [
@@ -113,7 +113,7 @@ class Sprite {
         this.shadowLoaded && ctx.drawImage(
             this.shadow,
             0, 0, 64, 64,
-            posX + 4, posY + 4, 56, 56
+            posX + 4, posY + 5, 56, 56
         );
 
         this.spriteLoaded && ctx.drawImage(

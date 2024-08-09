@@ -45,18 +45,6 @@ class OverworldMap {
 
 window.OverworldMaps = {
     //list of maps to be used in entire game
-    TestRoom: {
-        lowersrc: "assets/maps/War.png",
-        uppersrc: " ",
-        gameObjects: {
-            Winslow: new Character({
-                bPlayerControlled: true,
-                posX: utils.Grid(3),
-                posY: utils.Grid(3),
-                src: "assets/characters/WinslowWalkSprite.png"
-            })
-        }
-    },
 
         Hospital: {
             lowersrc: "assets/maps/HospitalMapBlock.png",
@@ -65,8 +53,16 @@ window.OverworldMaps = {
                 Winslow: new Character({
                     posX: utils.Grid(-16),
                     posY: utils.Grid(4),
-                    src: "assets/characters/WinslowWalkSprite.png",
+                    src: "assets/characters/WinslowWalkAndIdle.png",
                     bPlayerControlled: true
+                }),
+
+                PhineasAsleep: new Character({
+                    posX: utils.Grid(-15),
+                    posY: utils.Grid(4),
+                    src: "assets/characters/PhineasAsleep.png",
+                    useShadow: false,
+                    animations: {"idle": [0, 0]}
                 })
             },
             walls: {
@@ -331,10 +327,10 @@ window.OverworldMaps = {
                 [utils.asMapCoord(-19, -17)]: true,
 
                 // Phineas Bed
-                [utils.asMapCoord(-22, -8)]: true,
+                /*[utils.asMapCoord(-22, -8)]: true,
                 [utils.asMapCoord(-22, -7)]: true,
                 [utils.asMapCoord(-23, -8)]: true,
-                [utils.asMapCoord(-23, -7)]: true,
+                [utils.asMapCoord(-23, -7)]: true,*/
 
                 // Phineas Seats and Bench
                 [utils.asMapCoord(-19, -7)]: true,
@@ -361,6 +357,14 @@ window.OverworldMaps = {
                 [utils.asMapCoord(-19, -17)]: true,
                 [utils.asMapCoord(-19, -13)]: true,
                 [utils.asMapCoord(-19, -12)]: true,
+            }
+        }, 
+
+        HospitalStreet: {
+            gameObjects:{
+                Winslow: new Character({
+                    bPlayerControlled: true
+                })
             }
         }
     }

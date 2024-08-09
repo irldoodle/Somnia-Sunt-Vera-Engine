@@ -23,7 +23,7 @@ class Overworld {
                 arrow: this.directionInput.direction,
                 map: this.map,
             })
-            console.log("Winslow: " + this.map.gameObjects.Winslow.posX / 32 + ", " + this.map.gameObjects.Winslow.posY / 32 );
+            //console.log("Winslow: " + this.map.gameObjects.Winslow.posX / 32 + ", " + this.map.gameObjects.Winslow.posY / 32 );
         });
 
         this.map.drawLowerMap(this.bgctx, camCenter);
