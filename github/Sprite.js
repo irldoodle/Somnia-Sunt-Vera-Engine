@@ -15,12 +15,12 @@ class Sprite {
         this.sprite.onload = () => {
             this.spriteLoaded = true;
         };
-        this.sprite.src = config.src; 
+        this.sprite.src = config.src;
 
         //this.preload(config);
 
-        this.useShadow = config.useShadow || true;
-        if (this.useShadow) {
+        this.useShadow = config.useShadow;
+        if (this.useShadow === true) {
             this.shadow = new Image();
             this.shadow.onload = () => {
                 this.shadowLoaded = true;
@@ -72,13 +72,6 @@ class Sprite {
         this.gameObject = config.gameObject;
     }
 
-    preload(config) {
-        this.sprite.load.path = config.loadPath;
-
-        this.load.image("idle", config.idleSprite);
-        this.load.image("walk", config.walkSprite);
-    }
-
     get frame() {
         return this.animations[this.currentAnimation][this.currentAnimationFrame];
     }
@@ -106,22 +99,44 @@ class Sprite {
     }
 
     draw(ctx, camCenter) {
-        const posX = this.gameObject.posX + utils.Grid(4) - camCenter.posX - 16; // +- offset;
-        const posY = this.gameObject.posY + utils.Grid(3) - camCenter.posY - 32; // +- offset;
-        const [frameX, frameY] = this.frame;
+        if (this.gameObject === camCenter) {
+            const X = this.gameObject.posX + utils.Grid(4) - camCenter.posX - 16; // +- offset;
+            const Y = this.gameObject.posY + utils.Grid(3) - camCenter.posY - 32; // +- offset;
 
-        this.shadowLoaded && ctx.drawImage(
-            this.shadow,
-            0, 0, 64, 64,
-            posX + 4, posY + 5, 56, 56
-        );
+            const [frameX, frameY] = this.frame;
 
-        this.spriteLoaded && ctx.drawImage(
-            this.sprite,
-            frameX * 64, frameY * 64, 64, 64,
-            posX, posY, 64, 64
-        );
+            this.shadowLoaded && ctx.drawImage(
+                this.shadow,
+                0, 0, 64, 64,
+                X + 4, Y + 5, 56, 56
+            );
 
-        this.updateAnimation();
+            this.spriteLoaded && ctx.drawImage(
+                this.sprite,
+                frameX * 64, frameY * 64, 64, 64,
+                X, Y, 64, 64
+            );
+
+            this.updateAnimation();
+        }
+        else {
+            const X = this.gameObject.posX + utils.Grid(4) - camCenter.posX - 16; // +- offset;
+            const Y = this.gameObject.posY + utils.Grid(3) - camCenter.posY - 32; // +- offset;
+            const [frameX, frameY] = this.frame;
+
+            this.shadowLoaded && ctx.drawImage(
+                this.shadow,
+                0, 0, 64, 64,
+                X + 4, Y + 5, 56, 56
+            );
+
+            this.spriteLoaded && ctx.drawImage(
+                this.sprite,
+                frameX * 64, frameY * 64, 64, 64,
+                X, Y, 64, 64
+            );
+
+            this.updateAnimation();
+        }
     }
 }

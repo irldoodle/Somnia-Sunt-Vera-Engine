@@ -16,7 +16,8 @@ class GameObject {
         this.sprite = new Sprite({
             gameObject: this,
             src: config.src || "assets/characters/Unarmed_Walk_full.png",
-            useShadow: config.useShadow
+            useShadow: config.useShadow,
+            animations: config.animations
         });
     }
 

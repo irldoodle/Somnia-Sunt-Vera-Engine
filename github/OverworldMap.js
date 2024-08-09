@@ -54,16 +54,17 @@ window.OverworldMaps = {
                     posX: utils.Grid(-16),
                     posY: utils.Grid(4),
                     src: "assets/characters/WinslowWalkAndIdle.png",
-                    bPlayerControlled: true
+                    bPlayerControlled: true,
+                    useShadow: true
                 }),
-
-                PhineasAsleep: new Character({
-                    posX: utils.Grid(-15),
-                    posY: utils.Grid(4),
+                PhineasAsleep: new GameObject({
+                    posX: utils.Grid(-23),
+                    posY: utils.Grid(-7.75),
                     src: "assets/characters/PhineasAsleep.png",
                     useShadow: false,
-                    animations: {"idle": [0, 0]}
+                    animations: {"idle-down": [[0, 0]]}
                 })
+                
             },
             walls: {
                 // Map borders
