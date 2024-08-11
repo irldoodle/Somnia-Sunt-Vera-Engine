@@ -100,15 +100,15 @@ class Sprite {
 
     draw(ctx, camCenter) {
         if (this.gameObject === camCenter) {
-            const X = this.gameObject.posX + utils.Grid(4) - camCenter.posX - 16; // +- offset;
-            const Y = this.gameObject.posY + utils.Grid(3) - camCenter.posY - 32; // +- offset;
+            const X = this.gameObject.posX + utils.Grid(4) - camCenter.posX ; // +- offset;
+            const Y = this.gameObject.posY + utils.Grid(3) - camCenter.posY ; // +- offset;
 
             const [frameX, frameY] = this.frame;
 
             this.shadowLoaded && ctx.drawImage(
                 this.shadow,
                 0, 0, 64, 64,
-                X + 4, Y + 5, 56, 56
+                X + 4.5, Y + 5, 56, 56
             );
 
             this.spriteLoaded && ctx.drawImage(
@@ -120,14 +120,14 @@ class Sprite {
             this.updateAnimation();
         }
         else {
-            const X = this.gameObject.posX + utils.Grid(4) - camCenter.posX - 16; // +- offset;
-            const Y = this.gameObject.posY + utils.Grid(3) - camCenter.posY - 32; // +- offset;
+            const X = this.gameObject.posX + utils.Grid(4) - camCenter.posX ; // +- offset;
+            const Y = this.gameObject.posY + utils.Grid(3) - camCenter.posY ; // +- offset;
             const [frameX, frameY] = this.frame;
 
             this.shadowLoaded && ctx.drawImage(
                 this.shadow,
                 0, 0, 64, 64,
-                X + 4, Y + 5, 56, 56
+                X + 4.5, Y + 5, 56, 56
             );
 
             this.spriteLoaded && ctx.drawImage(

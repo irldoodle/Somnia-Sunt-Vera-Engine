@@ -15,7 +15,7 @@ class Overworld {
         this.bgctx.clearRect(0, 0, this.bgctx.canvas.width, this.bgctx.canvas.height);
         this.gamectx.clearRect(0, 0, this.gamectx.canvas.width, this.gamectx.canvas.height);
         
-        const camCenter = this.map.gameObjects.Winslow;
+        let camCenter = this.map.gameObjects.Winslow;
 
         Object.values(this.map.gameObjects).forEach(object => {
             object.update({
@@ -23,7 +23,7 @@ class Overworld {
                 arrow: this.directionInput.direction,
                 map: this.map,
             })
-            //console.log("Winslow: " + this.map.gameObjects.Winslow.posX / 32 + ", " + this.map.gameObjects.Winslow.posY / 32 );
+            console.log("Winslow: " + this.map.gameObjects.Winslow.posX / 32 + ", " + this.map.gameObjects.Winslow.posY / 32 );
         });
 
         this.map.drawLowerMap(this.bgctx, camCenter);
@@ -41,7 +41,7 @@ class Overworld {
 
     startGameLoop() {
         let previousFrameTime;
-        const thisFrameTime = 1/90;
+        const thisFrameTime = 1/80;
         const tick = (DeltaTime) => {
             if (this.map.isPaused){
                 return;
