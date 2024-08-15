@@ -19,12 +19,14 @@ body{
     
 }
 .game-container canvas{
+    width: 384px;
+    height: 288px;
     position: absolute;
     border: 1px white;
     image-rendering: crisp-edges;
     image-rendering: -moz-crisp-edges;
     image-rendering: pixelated;
     border: 0.25px solid white;
-    transform: scale(3) translateX(75%) translateY(40%);
+    transform: scale(2.25) translateX(60%) translateY(27.5%);
 
 }

@@ -4,9 +4,11 @@ class Overworld {
 
         this.bgcanvas = this.element.querySelector(".background-canvas");
         this.bgctx = this.bgcanvas.getContext("2d");
+        this.bgctx.imageSmoothingEnabled = false;
 
         this.gamecanvas = this.element.querySelector(".game-canvas");
         this.gamectx = this.gamecanvas.getContext("2d");
+        this.gamectx.imageSmoothingEnabled = false;
 
         this.map = null;
     }
