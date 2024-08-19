@@ -1,4 +1,6 @@
-class Overworld {
+import { OverworldMap, OverworldMaps } from "./OverworldMap.js";
+
+export class Overworld {
     constructor(config) {
         this.element = config.element;
 
@@ -63,7 +65,7 @@ class Overworld {
     }
 
     init() {
-        this.map = new OverworldMap(window.OverworldMaps.Hospital);
+        this.map = new OverworldMap(OverworldMaps.Hospital);
 
         this.directionInput = new DirectionInput({world:this});
         this.directionInput.init();
