@@ -11,22 +11,17 @@ body{
 
 .game-container{
     position: relative;
-    width: 1920px;
-    height: 1080px;
     margin: 0 auto;
-    margin-top: 50px;
-    
-    
+    margin-top: -3%;
 }
 .game-container canvas{
-    width: 384px;
-    height: 288px;
+    width: 512px;
+    height: 384px;
     position: absolute;
     border: 1px white;
     image-rendering: crisp-edges;
     image-rendering: -moz-crisp-edges;
     image-rendering: pixelated;
     border: 0.25px solid white;
-    transform: scale(2.25) translateX(60%) translateY(27.5%);
-
+    transform: scale(2);
 }

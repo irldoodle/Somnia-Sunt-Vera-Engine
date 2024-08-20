@@ -47,11 +47,17 @@ export class OverworldMap {
 
 export const OverworldMaps = {
     //list of maps to be used in entire game
-
         Hospital: {
-            lowersrc: "assets/maps/HospitalMapBlock.png",
+            lowersrc: "assets/maps/Hospital/HospitalMapBlock.png",
             uppersrc: " ",
             gameObjects: {
+                PhineasAsleep: new Character({
+                    posX: utils.Grid(1.1),
+                    posY: utils.Grid(9.2),
+                    src: "assets/characters/PhineasAsleep.png",
+                    useShadow: false,
+                    animations: {"idle-down": [[0, 0]]}
+                }),
                 Winslow: new Character({
                     posX: utils.Grid(8),
                     posY: utils.Grid(22),
@@ -59,14 +65,12 @@ export const OverworldMaps = {
                     bPlayerControlled: true,
                     useShadow: true
                 }),
-                PhineasAsleep: new Character({
-                    posX: utils.Grid(1.1),
-                    posY: utils.Grid(9.2),
-                    src: "assets/characters/PhineasAsleep.png",
-                    useShadow: false,
-                    animations: {"idle-down": [[0, 0]]}
+                Secretary: new Character({
+                    posX: utils.Grid(2),
+                    posY: utils.Grid(19),
+                    src: "assets/characters/IdleSpriteSheetTemplate.png",
+                    currentAnimation: "idle-right"
                 })
-                
             },
            walls: HospitalMapWalls
         },
