@@ -12,6 +12,8 @@ class Character extends GameObject {
             "right": ["posX", 1],
             "left": ["posX", -1],
         }
+
+        this.behaviorLoop = config.behaviorLoop || [{type:"idle", direction:"down"}];
     }
 
     update(state) {

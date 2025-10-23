@@ -16,7 +16,7 @@ export class OverworldMap {
     drawLowerMap(ctx, camCenter) {
         ctx.drawImage(
             this.lowerImage,
-            utils.Grid(7.5) - (camCenter.posX), utils.Grid(5) - (camCenter.posY),
+            utils.GridToPos(7.5) - (camCenter.posX), utils.GridToPos(5) - (camCenter.posY),
             // utils.Grid(16), utils.Grid(12),
             // //this.lowerImage.width / 2, this.lowerImage.height / 2,
             // 0, 0, 0, 0
@@ -42,6 +42,29 @@ export class OverworldMap {
         const {x,y} = utils.nextPos(initx, inity, dir);
         return this.walls[`${x},${y}`] || false;
     }
+
+    addWall(x, y){
+        this.walls[utils.asMapCoord(x,y)] = true;
+    }
+
+    destroyWall(x, y){
+        delete this.walls[utils.asMapCoord(x,y)];
+    }
+
+    moveWall(xi, yi, dir){
+        this.destroyWall(xi, yi);
+        const {x,y} = utils.nextPos(xi, yi, dir);
+        this.addWall(x, y);
+    }
+
+    mountObjects(){
+        Object.keys(this.gameObjects).forEach(key => {
+            let obj = this.gameObjects[key];
+            obj.id = key;
+
+            obj.mount(this);
+        });
+    }
 }
 
 
@@ -52,24 +75,25 @@ export const OverworldMaps = {
             uppersrc: " ",
             gameObjects: {
                 PhineasAsleep: new Character({
-                    posX: utils.Grid(1.1),
-                    posY: utils.Grid(9.2),
+                    posX: utils.GridToPos(1.1),
+                    posY: utils.GridToPos(9.2),
                     src: "assets/characters/PhineasAsleep.png",
                     useShadow: false,
                     animations: {"idle-down": [[0, 0]]}
                 }),
                 Winslow: new Character({
-                    posX: utils.Grid(8),
-                    posY: utils.Grid(22),
+                    posX: utils.GridToPos(8),
+                    posY: utils.GridToPos(22),
                     src: "assets/characters/WinslowWalkAndIdle.png",
                     bPlayerControlled: true,
                     useShadow: true
                 }),
                 Secretary: new Character({
-                    posX: utils.Grid(2),
-                    posY: utils.Grid(19),
-                    src: "assets/characters/IdleSpriteSheetTemplate.png",
-                    currentAnimation: "idle-right"
+                    posX: utils.GridToPos(10),
+                    posY: utils.GridToPos(18),
+                    src: "assets/characters/WinslowWalkAndIdle.png",
+                    useShadow: true,
+                    currentAnimation: this.sprite.animations["idle-left"]
                 })
             },
            walls: HospitalMapWalls

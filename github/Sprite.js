@@ -99,8 +99,8 @@ class Sprite {
     }
 
     draw(ctx, camCenter) {
-            const X = this.gameObject.posX + utils.Grid(6) - camCenter.posX + 1; // +- offset;
-            const Y = this.gameObject.posY + utils.Grid(3) - camCenter.posY; // +- offset;
+            const X = this.gameObject.posX + utils.GridToPos(6) - camCenter.posX + 1; // +- offset;
+            const Y = this.gameObject.posY + utils.GridToPos(3) - camCenter.posY; // +- offset;
 
             const [frameX, frameY] = this.frame;
 

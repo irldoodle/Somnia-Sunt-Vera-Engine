@@ -21,6 +21,16 @@ class GameObject {
         });
     }
 
+    mount(map){
+        map.addWall(this.posX, this.posY);
+        this.isMounted = true;
+
+        setTimeout( e =>{if (this.behaviorLoop.length != null) 
+        {
+            this.doBehaviorEvent(map);
+        }}, 10)
+
+    }
     update() {
 
     }
