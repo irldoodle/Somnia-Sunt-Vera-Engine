@@ -1,8 +1,10 @@
 const utils = {
-    Grid(n) {
+    GridToPos(n) {
         return n * 32;
     },
-
+    PosToGrid(n){
+        return n / 32;
+    },
     asMapCoord(x, y){
         return `${x*32},${y*32}`;
     },

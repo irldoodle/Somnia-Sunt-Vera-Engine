@@ -27,7 +27,7 @@ export class Overworld {
                 arrow: this.directionInput.direction,
                 map: this.map,
             })
-            console.log("Winslow: " + this.map.gameObjects.Winslow.posX / 32 + ", " + this.map.gameObjects.Winslow.posY / 32 );
+            console.log("Winslow: " + utils.PosToGrid(camCenter.posX) + ", " + utils.PosToGrid(camCenter.posY) );
         });
 
         this.map.drawLowerMap(this.bgctx, camCenter);
